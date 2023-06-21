@@ -18,23 +18,25 @@ class _ExpensesState extends State<Expenses> {
     });
   }
 
-  void _removeItems(Expenses expense) {
+  void _removeItems(Expense expense) {
+    print("setstate snackbar");
+    final SnackBar snacker = SnackBar(
+      content: const Text('Expense delete'),
+      duration: const Duration(seconds: 5),
+      action: SnackBarAction(
+        label: 'Undo',
+        onPressed: () {
+          setState(() {
+            registeredExpense.insert;
+          });
+        },
+      ),
+    );
+
     setState(() {
       registeredExpense.remove(expense);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Expense delete'),
-          duration: const Duration(seconds: 5),
-          action: SnackBarAction(
-            label: 'Undo',
-            onPressed: () {
-              setState(() {
-                registeredExpense.insert;
-              });
-            },
-          ),
-        ),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(snacker);
+      print("setstate snackbar");
     });
   }
 
@@ -61,7 +63,10 @@ class _ExpensesState extends State<Expenses> {
         mainContain = ExpenseList(
           expenses: registeredExpense,
           onRemoveItem: (expense) {
-            _removeItems;
+            print("remove");
+            final expenseValue = expense;
+            print("id ${expenseValue.title}");
+            _removeItems(expense);
           },
         );
       });

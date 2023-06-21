@@ -108,7 +108,7 @@ class _NewExpenseState extends State<NewExpense> {
         ),
         Row(
           children: [
-            DropdownButton(
+            DropdownButton<Categories>(
               value: _selectedCategories,
               items: Categories.values
                   .map(
@@ -121,11 +121,8 @@ class _NewExpenseState extends State<NewExpense> {
                   )
                   .toList(),
               onChanged: (valued) {
-                if (valued == null) {
-                  return;
-                }
                 setState(() {
-                  _selectedCategories == valued;
+                  _selectedCategories = valued!;
                 });
               },
             ),

@@ -5,7 +5,12 @@ import 'package:uuid/uuid.dart';
 const uuid = Uuid();
 final formatter = DateFormat.yMd();
 
-enum Categories { food, travel, leisure, work }
+enum Categories {
+  food,
+  travel,
+  leisure,
+  work;
+}
 
 const categoriesIcon = {
   Categories.food: Icons.lunch_dining,
@@ -30,5 +35,24 @@ class Expense {
 
   String get formattedDate {
     return formatter.format(date!);
+  }
+}
+
+class ExpenseColoection {
+  final Categories? category;
+  final List<Expense?> expenses;
+
+  ExpenseColoection(this.category, this.expenses);
+  ExpenseColoection.forCategory(List<Expense> allExpenses, this.category)
+      : expenses = allExpenses
+            .where((expense) => expense.categories == category)
+            .toList();
+
+  double get totalExpense {
+    double sum = 0;
+    for (final expense in expenses) {
+      sum += expense!.amount!;
+    }
+    return sum;
   }
 }
