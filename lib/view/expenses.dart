@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui/chart/chart.dart';
 import 'package:ui/widgets/expense_list/expenses_list.dart';
 import 'package:ui/widgets/expense_list/new_expense.dart';
 
@@ -112,7 +113,7 @@ class _ExpensesState extends State<Expenses> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text('The chart'),
+                  Chart(expenses: registeredExpense),
                   const SizedBox(
                     height: 20,
                   ),
