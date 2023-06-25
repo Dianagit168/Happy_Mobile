@@ -6,6 +6,7 @@ const uuid = Uuid();
 final formatter = DateFormat.yMd();
 
 enum Categories {
+  // What is enum
   food,
   travel,
   leisure,
@@ -13,6 +14,7 @@ enum Categories {
 }
 
 const categoriesIcon = {
+  // I don't know
   Categories.food: Icons.lunch_dining,
   Categories.travel: Icons.flight_takeoff,
   Categories.leisure: Icons.movie,
@@ -40,10 +42,11 @@ class Expense {
 
 class ExpenseColoection {
   final Categories? category;
-  final List<Expense?> expenses;
+  final List<Expense?> expenses; //the same class ExpenseList
 
   ExpenseColoection(this.category, this.expenses);
-  ExpenseColoection.forCategory(List<Expense> allExpenses, this.category)
+  ExpenseColoection.forCategory(
+      List<Expense> allExpenses, this.category) //I don't know
       : expenses = allExpenses
             .where((expense) => expense.categories == category)
             .toList();
