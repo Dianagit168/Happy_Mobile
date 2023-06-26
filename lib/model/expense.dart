@@ -45,8 +45,12 @@ class ExpenseColoection {
   final List<Expense?> expenses; //the same class ExpenseList
 
   ExpenseColoection(this.category, this.expenses);
-  ExpenseColoection.forCategory(
-      List<Expense> allExpenses, this.category) //I don't know
+
+  ExpenseColoection.dina(this.expenses, this.category) {
+    print("hasdlfasdlf");
+  }
+
+  ExpenseColoection.forCategory(List<Expense> allExpenses, this.category) //I don't know
       : expenses = allExpenses
             .where((expense) => expense.categories == category)
             .toList();
